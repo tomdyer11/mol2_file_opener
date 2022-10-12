@@ -9,28 +9,14 @@ with open(filename, 'r') as mol2_file:
     first_item = mol2_lines.index('@<TRIPOS>ATOM\n')
     last_item = mol2_lines.index('@<TRIPOS>BOND\n')
 
-    print(first_item)
-    print(last_item)
+    charges = {}
+    for line in mol2_lines[first_item + 1:last_item]:
+        elements = line.split()
+        print(elements[1], elements[-1])
 
-    print(mol2_lines[first_item + 1:last_item])
+        charges[elements[1]] = float(elements[-1])
 
-    i = first_item + 1
-    numbers = []
+    print(charges)
 
-    element_line1 = (mol2_lines[first_item + 1])
-    element1 = element_line1.split(' ')
-
-    print(element1)
-
-    print(element1[7])
-    print(element1[44])
-
-chargedic = {'element1[7]': 'element1[44]'}
-
-chargedic[element_i[7]] = charge
-
-
-
-
-
+print(charges['H5'])
 
